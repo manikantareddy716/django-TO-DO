@@ -1,0 +1,28 @@
+{% extends "main.html" %}
+{% block content %}
+<center>
+
+  <h1>TRASH</h1>
+
+  <table border="1">
+    <tr>
+      <th>Task</th>
+      <th>Desc</th>
+      <th>Restore</th>
+      <th>Delete</th>
+    </tr>
+
+    {% for i in data %}
+    <td>{{i.task}}</td>
+    <td>{{i.desc}}</td>
+    <td>
+      <a href="{% url 'restore' i.id %}">Restore</a>
+    </td>
+    <td>
+      <a href="{% url 'delete' i.id %}">Delete</a>
+    </td>
+    {% endfor %}
+
+  </table>
+</center>
+{% endblock %}

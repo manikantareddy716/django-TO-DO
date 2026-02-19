@@ -1,0 +1,24 @@
+{% extends "main.html" %}
+{% block content %}
+
+
+
+<center>
+
+  <h1>ADD YOUR TASKS HERE</h1>
+
+  <form action="" method="POST">
+    {% csrf_token %}
+    <label for="">Task: </label>
+    <input type="text" name="task" id=""> <br><br>
+
+    <label for="">Desc</label>
+    <input type="text" name="desc" id=""> <br><br>
+
+    <label for="">Due Date</label><br>
+    <input type="datetime-local" name="due_date" id=""> <br><br>
+    
+    <button type="submit">Add TAsk</button>
+  </form>
+</center>
+{% endblock %}

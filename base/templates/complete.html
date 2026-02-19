@@ -1,0 +1,19 @@
+{% extends "main.html" %}
+{% block content %}
+
+<center>
+  <h1>Completed Tasks</h1>
+  <table border="1">
+    <tr>
+      <th>Task</th>
+      <th>Description</th>
+    </tr>
+    {% for i in data %}
+    <tr>
+      <td>{{i.task}}</td>
+      <td>{{i.desc}}</td>
+    </tr>
+    {% endfor %}
+  </table>
+</center>
+{% endblock %}

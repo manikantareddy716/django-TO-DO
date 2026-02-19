@@ -1,0 +1,42 @@
+{% extends "main.html" %}
+{% block content %}
+
+<center>
+<h1>LIST OF TASKS</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>S.NO</th>
+      <th>Task</th>
+      <th>Description</th>
+      <th>Created At</th>
+      <th>Due Date</th>
+      <th>Completed</th>
+      <th>Edit</th>
+      <th>Trash</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for i in data %}
+      <tr>
+        <td>{{i.id}}</td>
+        <td>{{i.task}}</td>
+        <td>{{i.desc}}</td>
+        <td>{{ i.created_at|date:"d M Y, h:i A" }}</td>
+        <td class="{% if i.due_date and i.due_date < now %}overdue{% endif %}">
+          {% if i.due_date %}
+            {{ i.due_date|date:"d M Y, h:i A" }}
+          {% else %}
+            Not set
+          {% endif %}
+        </td>
+        <td><a href="{% url 'complete' i.id %}">Completed</a></td>
+        <td><a href="{% url 'edit' i.id %}">Edit</a></td>
+        <td><a href="{% url 'trash_task' i.id %}">Trash</a></td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</center>
+{% endblock %}
